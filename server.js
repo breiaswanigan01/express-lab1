@@ -1,0 +1,26 @@
+"use strict";
+// SAME AS IMPORT, JUST A DIFFER WAY
+// require the Express module, body-parser, and cors
+const express = require("express");
+
+const cors = require("cors");
+// require our routes.js file
+const routes = require("./routes");
+const bodyParser = require("body-parser");
+// creates an instance of an Express server
+const app = express();
+
+// Enable Cross Origin Resource Sharing so this API
+// can be used from web-apps other domains.
+app.use(cors());
+// allow POST and PUT requests to use JSON bodies
+app.use(express.json());
+// use the routes file
+app.use("/", routes);
+
+// define the port
+const port = 3000;
+// run the server
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}.`);
+});
